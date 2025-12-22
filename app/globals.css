@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Float animation for bots */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delay-1 {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-float-delay-2 {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-float-delay-3 {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.animate-float-delay-4 {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-float-delay-5 {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+
+@theme inline {
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Header colors */
+  --color-header-logo: #03275A;
+  --color-header-nav-start: #03142F;
+  --color-header-nav-end: #03285C;
+  --color-header-cta: #04214B;
+
+  /* Hero colors - from Figma */
+  --color-badge-start: #82B2F4;
+  --color-badge-end: #2B72E0;
+  --color-badge-dot: #4ADE80;
+  --color-bot-card-start: #82B2F4;
+  --color-bot-card-end: #2B72E0;
+  --color-progress-bar: #14B8A6;
+  --color-gradient-text-start: #CBE7FE;
+  --color-gradient-text-end: #5198FF;
+}
