@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 
-import GridBackground from "./GridBackground";
-
 function BotCard({
   name,
   icon,
@@ -88,12 +86,6 @@ export default function Hero() {
 
       {/* Bot cards + Central ghost - pulled up with negative margin */}
       <div className="relative -mt-8 flex flex-1 w-full max-w-[1282px] items-start justify-center md:-mt-12 lg:-mt-16">
-        {/* Background Grid - Now part of the Hero Container for alignment */}
-        <GridBackground />
-
-        {/* SVG Connection Lines */}
-
-
         {/* Central Ghost */}
         <div className="relative z-10 mt-16 md:mt-20 lg:mt-24">
           <Image
@@ -104,80 +96,6 @@ export default function Hero() {
             className="h-auto w-[280px] md:w-[350px] lg:w-[420px]"
             priority
           />
-        </div>
-
-        {/* Active Connection Lines - Moved inside Hero for perfect alignment */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <style jsx global>{`
-              @keyframes snake-flow {
-                0% {
-                  stroke-dashoffset: 100;
-                }
-                100% {
-                  stroke-dashoffset: -100;
-                }
-              }
-            `}</style>
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              {/* Gradient for running snake stroke */}
-              <linearGradient id="snake-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#00AAFF" />
-                <stop offset="100%" stopColor="#7DACF6" />
-              </linearGradient>
-            </defs>
-
-            {/* Paths corresponding to Bot Positions */}
-
-            {/* Script Bot (Left Top) */}
-            <g>
-              <path d="M 4.87 12 L 4.87 19.41 Q 4.87 20.41 5.87 20.41 L 50.12 20.41" stroke="#A3CBFF" strokeWidth="1" strokeOpacity="0.3" fill="none" vectorEffect="non-scaling-stroke" />
-              <path d="M 4.87 12 L 4.87 19.41 Q 4.87 20.41 5.87 20.41 L 50.12 20.41" stroke="url(#snake-gradient)" strokeWidth="4.5" strokeLinecap="round" fill="none" vectorEffect="non-scaling-stroke"
-                style={{ filter: "url(#glow-blur-hero)", strokeDasharray: "25 100", strokeDashoffset: "100", animation: "snake-flow 3s linear infinite", mixBlendMode: "color-dodge" }} />
-            </g>
-
-            {/* Idea Bot (Right Top) */}
-            <g>
-              <path d="M 95.36 12 L 95.36 19.41 Q 95.36 20.41 94.36 20.41 L 50.12 20.41" stroke="#A3CBFF" strokeWidth="1" strokeOpacity="0.3" fill="none" vectorEffect="non-scaling-stroke" />
-              <path d="M 95.36 12 L 95.36 19.41 Q 95.36 20.41 94.36 20.41 L 50.12 20.41" stroke="url(#snake-gradient)" strokeWidth="4.5" strokeLinecap="round" fill="none" vectorEffect="non-scaling-stroke"
-                style={{ filter: "url(#glow-blur-hero)", strokeDasharray: "25 100", strokeDashoffset: "100", animation: "snake-flow 3s linear infinite", mixBlendMode: "color-dodge" }} />
-            </g>
-
-            {/* Avatar Bot (Left Mid) */}
-            <g>
-              <path d="M 18.45 38 L 18.45 42.21 Q 18.45 43.21 19.45 43.21 L 50.12 43.21" stroke="#A3CBFF" strokeWidth="1" strokeOpacity="0.3" fill="none" vectorEffect="non-scaling-stroke" />
-              <path d="M 18.45 38 L 18.45 42.21 Q 18.45 43.21 19.45 43.21 L 50.12 43.21" stroke="url(#snake-gradient)" strokeWidth="4.5" strokeLinecap="round" fill="none" vectorEffect="non-scaling-stroke"
-                style={{ filter: "url(#glow-blur-hero)", strokeDasharray: "25 100", strokeDashoffset: "100", animation: "snake-flow 3s linear infinite", mixBlendMode: "color-dodge" }} />
-            </g>
-
-            {/* Edit Bot (Right Mid) */}
-            <g>
-              <path d="M 81.79 38 L 81.79 42.21 Q 81.79 43.21 80.79 43.21 L 50.12 43.21" stroke="#A3CBFF" strokeWidth="1" strokeOpacity="0.3" fill="none" vectorEffect="non-scaling-stroke" />
-              <path d="M 81.79 38 L 81.79 42.21 Q 81.79 43.21 80.79 43.21 L 50.12 43.21" stroke="url(#snake-gradient)" strokeWidth="4.5" strokeLinecap="round" fill="none" vectorEffect="non-scaling-stroke"
-                style={{ filter: "url(#glow-blur-hero)", strokeDasharray: "25 100", strokeDashoffset: "100", animation: "snake-flow 3s linear infinite", mixBlendMode: "color-dodge" }} />
-            </g>
-
-            {/* Publish Bot (Left Bottom) */}
-            <g>
-              <path d="M 4.87 64 L 4.87 59.41 Q 4.87 58.41 5.87 58.41 L 50.12 58.41" stroke="#A3CBFF" strokeWidth="1" strokeOpacity="0.3" fill="none" vectorEffect="non-scaling-stroke" />
-              <path d="M 4.87 64 L 4.87 59.41 Q 4.87 58.41 5.87 58.41 L 50.12 58.41" stroke="url(#snake-gradient)" strokeWidth="4.5" strokeLinecap="round" fill="none" vectorEffect="non-scaling-stroke"
-                style={{ filter: "url(#glow-blur-hero)", strokeDasharray: "25 100", strokeDashoffset: "100", animation: "snake-flow 3s linear infinite", mixBlendMode: "color-dodge" }} />
-            </g>
-
-            {/* Growth Bot (Right Bottom) */}
-            <g>
-              <path d="M 95.36 64 L 95.36 59.41 Q 95.36 58.41 94.36 58.41 L 50.12 58.41" stroke="#A3CBFF" strokeWidth="1" strokeOpacity="0.3" fill="none" vectorEffect="non-scaling-stroke" />
-              <path d="M 95.36 64 L 95.36 59.41 Q 95.36 58.41 94.36 58.41 L 50.12 58.41" stroke="url(#snake-gradient)" strokeWidth="4.5" strokeLinecap="round" fill="none" vectorEffect="non-scaling-stroke"
-                style={{ filter: "url(#glow-blur-hero)", strokeDasharray: "25 100", strokeDashoffset: "100", animation: "snake-flow 3s linear infinite", mixBlendMode: "color-dodge" }} />
-            </g>
-          </svg>
         </div>
 
         {/* All 6 Bot Cards positioned around */}

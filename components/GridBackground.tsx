@@ -8,12 +8,7 @@ const V_LINES_PCT = [
 ];
 
 const H_LINES_PCT = [
-    5.21, 12.81, 20.41, 28.01, 35.61, 43.21, 50.81, 58.41, 66.01
-];
-
-const V_LENGTHS_PCT = [
-    63.9, 67.9, 72.6, 76.3, 79.8, 82.9, 86.2, 90.2, 92.6, 96.3,
-    100, 96.3, 92.6, 90.2, 86.2, 82.9, 79.8, 76.3, 72.6, 67.9, 63.9
+    5.21, 12.81, 20.41, 28.01, 35.61, 43.21, 50.81, 58.41, 66.01, 73.61, 81.21, 88.81, 96.41
 ];
 
 interface GridBackgroundProps {
@@ -21,11 +16,11 @@ interface GridBackgroundProps {
 }
 
 export default function GridBackground({ className }: GridBackgroundProps) {
-    // Pure static grid background. 
-    // Active connection lines have been moved to Hero.tsx to ensure perfect vertical alignment with content.
+    // Pure static grid background that extends the full page.
+    // Active connection lines are in Hero.tsx for perfect alignment with content.
 
     return (
-        <div className={`pointer-events-none absolute inset-0 ${className}`}>
+        <div className={`pointer-events-none absolute inset-0 ${className || ""}`}>
             <svg
                 width="100%"
                 height="100%"
@@ -34,7 +29,7 @@ export default function GridBackground({ className }: GridBackgroundProps) {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
-                {/* Base Grid - Vertical Lines */}
+                {/* Base Grid - Vertical Lines - extend to 100% */}
                 {V_LINES_PCT.map((x, i) => (
                     <line
                         key={`v-${i}`}
@@ -42,9 +37,9 @@ export default function GridBackground({ className }: GridBackgroundProps) {
                         x1={`${x}`}
                         y1="0"
                         x2={`${x}`}
-                        y2={`${V_LENGTHS_PCT[i]}`}
-                        stroke="#093929"
-                        strokeOpacity="0.3"
+                        y2="100"
+                        stroke="#3B6BA8"
+                        strokeOpacity="0.25"
                         strokeWidth="0.5"
                         vectorEffect="non-scaling-stroke"
                     />
@@ -59,8 +54,8 @@ export default function GridBackground({ className }: GridBackgroundProps) {
                         y1={`${y}`}
                         x2="0"
                         y2={`${y}`}
-                        stroke="#093929"
-                        strokeOpacity="0.3"
+                        stroke="#3B6BA8"
+                        strokeOpacity="0.25"
                         strokeWidth="0.5"
                         vectorEffect="non-scaling-stroke"
                     />
