@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Tailwind v4: Use class-based dark mode instead of prefers-color-scheme */
+@variant dark (&:where(.dark, .dark *));
+
 /* Float animation for bots */
 @keyframes float {
 
@@ -42,25 +45,105 @@
   animation-delay: 2.5s;
 }
 
+/* Grid cell pulse animation */
+@keyframes cellPulse {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-cell-pulse {
+  animation: cellPulse ease-in-out forwards;
+}
+
 @theme inline {
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Header colors */
-  --color-header-logo: #03275A;
-  --color-header-nav-start: #03142F;
-  --color-header-nav-end: #03285C;
-  --color-header-cta: #04214B;
+  /* Header colors - reference CSS variables so they respond to light/dark mode */
+  --color-header-logo: var(--header-logo);
+  --color-header-nav-start: var(--header-nav-start);
+  --color-header-nav-end: var(--header-nav-end);
+  --color-header-cta: var(--header-cta);
+}
 
-  /* Hero colors - from Figma */
+/* ========================================
+   LIGHT MODE (Default)
+   ======================================== */
+:root {
+  /* Background */
+  --color-background: #ffffff;
+  --color-foreground: #0a0a0a;
+  --color-bg-gradient-start: #FFFFFF;
+  --color-bg-gradient-end: #DDE5ED;
+
+  /* Header - these are referenced by @theme */
+  --header-logo: #CADEFA;
+  --header-nav-start: #A5CEFE;
+  --header-nav-end: #CADEFA;
+  --header-cta: #A5CEFE;
+
+  /* Hero */
+  --color-hero-headline: #183F7B;
+  --color-hero-gradient-start: #5198FF;
+  --color-hero-gradient-end: #2B72E0;
+  --color-hero-description: #183F7B;
+
+  /* Badge */
   --color-badge-start: #82B2F4;
   --color-badge-end: #2B72E0;
-  --color-badge-dot: #4ADE80;
-  --color-bot-card-start: #82B2F4;
-  --color-bot-card-end: #2B72E0;
-  --color-progress-bar: #14B8A6;
-  --color-gradient-text-start: #CBE7FE;
-  --color-gradient-text-end: #5198FF;
+  --color-badge-dot: #2B72E0;
+
+  /* Bot cards */
+  --color-bot-card-bg: #5E9AF4;
+  --color-bot-card-text: #ffffff;
+
+  /* Grid */
+  --color-grid-line: #3B6BA8;
+  --grid-line-opacity: 0.15;
+}
+
+/* ========================================
+   DARK MODE (Activated via .dark class)
+   ======================================== */
+.dark {
+  /* Background */
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  --color-bg-gradient-start: transparent;
+  --color-bg-gradient-end: transparent;
+
+  /* Header - these are referenced by @theme */
+  --header-logo: #03275A;
+  --header-nav-start: #03142F;
+  --header-nav-end: #03285C;
+  --header-cta: #04214B;
+
+  /* Hero */
+  --color-hero-headline: #ffffff;
+  --color-hero-gradient-start: #CBE7FE;
+  --color-hero-gradient-end: #5198FF;
+  --color-hero-description: #ffffff;
+
+  /* Badge */
+  --color-badge-start: #82B2F4;
+  --color-badge-end: #2B72E0;
+  --color-badge-dot: #2B72E0;
+
+  /* Bot cards */
+  --color-bot-card-bg: #5E9AF4;
+  --color-bot-card-text: #ffffff;
+
+  /* Grid */
+  --color-grid-line: #3B6BA8;
+  --grid-line-opacity: 0.25;
 }
