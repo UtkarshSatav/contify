@@ -1,10 +1,18 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function EarlyAccess() {
   return (
     <section className="relative flex flex-col items-center px-4 py-24 md:py-32">
       {/* Heading with blue dot */}
-      <div className="flex items-center gap-3 mb-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex items-center gap-3 mb-4"
+      >
         <span
           className="h-3 w-3 rounded-full"
           style={{ backgroundColor: "#5198FF" }}
@@ -12,15 +20,27 @@ export default function EarlyAccess() {
         <h2 className="text-[47px] font-normal text-black" style={{ letterSpacing: "-0.02em" }}>
           Get early access
         </h2>
-      </div>
+      </motion.div>
 
       {/* Subheading */}
-      <p className="text-[22px] mb-10 text-black font-light">
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-[22px] mb-10 text-black font-light"
+      >
         Get early access to the end-to-end content system
-      </p>
+      </motion.p>
 
       {/* Email Form - Pill shaped */}
-      <form className="w-full max-w-[900px] mb-16">
+      <motion.form
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="w-full max-w-[900px] mb-16"
+      >
         <div
           className="relative flex items-stretch rounded-full"
           style={{
@@ -55,14 +75,21 @@ export default function EarlyAccess() {
             </button>
           </div>
         </div>
-      </form>
+      </motion.form>
 
       {/* Tagline */}
-      <p className="text-center text-[22px] font-normal max-w-[1000px] leading-relaxed text-black">
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="text-center text-[22px] font-normal max-w-[1000px] leading-relaxed text-black"
+      >
         Your 24/7 AI personal-brand content team that plans, creates, publishes, and optimizes
         <br className="hidden md:block" />
         {" "}your talking-head content automatically
-      </p>
+      </motion.p>
     </section>
   );
 }
+
